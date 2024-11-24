@@ -52,14 +52,14 @@ function decode(input){
     return result;
 }
 
-let fs = require('fs'); //подключили библиотеку
+let fs = require('fs'); 
 
-var Text = fs.readFileSync('input_to_encode.txt'); //считали из файла
-var start_string = inText.toString() //сохранили в переменную как строку
+var Text = fs.readFileSync('input_to_encode.txt'); 
+var start_string = inText.toString()
 
 encode_str = encode(start_string);
 fs.writeFileSync('code.txt', encode_str);
-console.log("Коэффициент сжатия = ", a.length/encode_str.length); // вывели степень сжатия
+console.log("Коэффициент сжатия = ", a.length/encode_str.length); 
 
 
 var CodedText = fs.readFileSync('input_to_decode.txt');
