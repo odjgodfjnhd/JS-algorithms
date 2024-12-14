@@ -1,6 +1,6 @@
-input = 'abrakadabra';
-alph = new Object();
-
+let fs = require('fs');
+var Sstring = fs.readFileSync('input_string.txt');
+var String = Sstring.toString();
 
 function Node(name, freq, used, parent, code)
 {
@@ -14,15 +14,15 @@ function Node(name, freq, used, parent, code)
 function reverse(s){
     return s.split("").reverse().join("");
 }
-
-inLength = input.length;
+inLength = String.length;
 //initilization
-for(let i = 0; i < input.length; i++)
+alph = new Object();
+for(let i = 0; i < String.length; i++)
 {
-	if(alph[input.charAt(i)])
-		alph[input.charAt(i)] ++
+	if(alph[String.charAt(i)])
+		alph[String.charAt(i)] ++
 	else
-		alph[input.charAt(i)] = 1;
+		alph[String.charAt(i)] = 1;
 }
 
 alphPower = 0;
@@ -63,7 +63,6 @@ for (let i = 1; i < alphPower; i++)
     tree.push(newNode);
     
 }
-console.log(tree);
 for (let i = 0; i < alphPower; i++)
 {
     codeForLetter = '';
@@ -76,4 +75,9 @@ for (let i = 0; i < alphPower; i++)
     alph[tree[i].name] = reverse(codeForLetter);
     
 }
-console.log(alph);
+
+
+for (let i in alph)
+{
+    console.log("Код для символа ", i, ": ", alph[i]);
+}
